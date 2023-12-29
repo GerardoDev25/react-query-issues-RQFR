@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.15.4",
+    "@tanstack/react-query-devtools": "^5.15.4",
     "bootstrap": "5.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -17,6 +19,7 @@
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.14.6",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "@vitejs/plugin-react": "^2.2.0",
