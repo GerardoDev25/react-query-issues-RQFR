@@ -16,7 +16,6 @@ export const useLabels = () => {
     queryFn: getLabels,
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 60,
-
     // initialData
     placeholderData: [
       {
