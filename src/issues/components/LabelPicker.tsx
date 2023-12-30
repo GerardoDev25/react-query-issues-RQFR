@@ -1,10 +1,11 @@
+import { LoadingIcon } from '../../share.components/LoadingIcon';
 import { useLabels } from '../hooks/useLabels';
 
 export const LabelPicker = () => {
   const labelsQuery = useLabels();
 
   if (labelsQuery.isLoading) {
-    return <h1>Loading...</h1>;
+    return <LoadingIcon />;
   }
 
   return (
