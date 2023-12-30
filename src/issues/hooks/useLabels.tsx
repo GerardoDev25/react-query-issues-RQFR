@@ -16,6 +16,26 @@ export const useLabels = () => {
     queryFn: getLabels,
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 60,
+
+    // initialData
+    placeholderData: [
+      {
+        id: 1205087127,
+        node_id: 'MDU6TGFiZWwxMjA1MDg3MTI3',
+        url: 'https://api.github.com/repos/facebook/react/labels/Component:%20Concurrent%20Features',
+        name: 'Component: Concurrent Features',
+        color: 'ffccd3',
+        default: false,
+      },
+      {
+        id: 2281766624,
+        node_id: 'MDU6TGFiZWwyMjgxNzY2NjI0',
+        url: 'https://api.github.com/repos/facebook/react/labels/Component:%20Scheduling%20Profiler',
+        name: 'Component: Scheduling Profiler',
+        color: '1dc3d6',
+        default: false,
+      },
+    ],
   });
 
   return labelsQuery;
