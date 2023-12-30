@@ -4,9 +4,8 @@ import { Label } from '../interfaces/label';
 import { sleep } from '../../helpers/sleep';
 
 const getLabels = async (): Promise<Label[]> => {
+  await sleep(2);
 
-  await sleep(2)
-  
   const { data } = await githubApi.get<Label[]>('/labels');
   return data;
 };
@@ -16,6 +15,7 @@ export const useLabels = () => {
     queryKey: ['labels'],
     queryFn: getLabels,
     refetchOnWindowFocus: false,
+    staleTime: 1000 * 60 * 60,
   });
 
   return labelsQuery;
