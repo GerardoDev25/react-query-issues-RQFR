@@ -11,7 +11,6 @@ const getLabels = async (): Promise<Label[]> => {
     //   Authorization: null,
     // },
   });
-  console.log(data);
   return data;
 };
 
