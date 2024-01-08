@@ -24,7 +24,7 @@ const getIssues = async ({
     params.append('labels', labelString);
   }
 
-  params.append('page', '1');
+  params.append('page', page.toString());
   params.append('per_page', '5');
 
   const { data } = await githubApi.get<Issue[]>('/issues', { params });
@@ -33,7 +33,7 @@ const getIssues = async ({
 
 export const useIssues = ({ labels, state }: Props) => {
   const [page, setPage] = useState(1);
-  
+
   useEffect(() => {
     setPage(1);
   }, [state, labels]);

@@ -9,11 +9,18 @@ interface Props {
   page?: number;
 }
 
+interface QueryProps {
+  pageParams?: number;
+  queryKey: (string | Props)[];
+}
+
 const getIssues = async ({
-  labels,
-  state,
-  page = 1,
-}: Props): Promise<Issue[]> => {
+  queryKey,
+  pageParams = 1,
+}: QueryProps): Promise<Issue[]> => {
+  const [, , args] = queryKey;
+  const { state, labels } = args as Props;
+
   await sleep(2);
 
   const params = new URLSearchParams();
@@ -23,7 +30,7 @@ const getIssues = async ({
     params.append('labels', labelString);
   }
 
-  params.append('page', '1');
+  params.append('page', pageParams.toString());
   params.append('per_page', '5');
 
   const { data } = await githubApi.get<Issue[]>('/issues', { params });
@@ -34,10 +41,13 @@ export const useIssuesInfinite = ({ state, labels }: Props) => {
   const issuesQuery = useInfiniteQuery({
     queryKey: ['issues', 'infinite', { state, labels, page: 1 }],
     queryFn: (data) => getIssues(data),
-    // getNextPageParam: (lastPage, pages) => {}
+    initialPageParam: 1,
+    getNextPageParam: () => {
+      return null;
+    },
   });
 
   return {
-    issuesQuery
+    issuesQuery,
   };
 };
